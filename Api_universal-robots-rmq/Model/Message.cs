@@ -6,11 +6,17 @@ namespace Api_universal_robots_rmq.Model
     {
         [Key]
         public int Id { get; set; }
-        public string? message { get; set; }
+        public string? Description { get; set; }
 
-        public DateTime created { get; set; }
+        public DateTime Created { get; set; }
 
-        public enum warningstate {advarsel, stoppet, nopower }
+        public WarningState State { get; set; }
+    }
 
+    public enum WarningState
+    {
+        Warning,
+        Info,
+        Error
     }
 }

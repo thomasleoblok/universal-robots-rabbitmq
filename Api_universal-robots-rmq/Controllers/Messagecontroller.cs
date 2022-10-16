@@ -27,7 +27,7 @@ namespace Api_universal_robots_rmq.Controllers
             {
                 var message = _context.messages.SingleOrDefault(id => id.Id == model.Id);
                 if (message == null) return BadRequest();
-                var messageresult = new Message { message = model.message, created = model.created };
+                var messageresult = new Message { Description = model.Description, State = model.State, Created = DateTime.Now };
                 _messageService.Create(messageresult);
                 return Ok(messageresult);
             }
@@ -44,7 +44,7 @@ namespace Api_universal_robots_rmq.Controllers
             try { 
             
             if (sid5 != model.Id) return BadRequest();
-            var messageresult = new Message { message = model.message};
+            var messageresult = new Message { Description = model.Description};
             _messageService.update(sid5, messageresult);
             return Ok(messageresult);
             }
