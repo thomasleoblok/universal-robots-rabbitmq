@@ -1,5 +1,5 @@
 ﻿using Api_universal_robots_rmq.DAL;
-using Api_universal_robots_rmq.Model;
+using MessageModel;
 
 namespace Api_universal_robots_rmq.Service
 {

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Api_universal_robots_rmq.Model;
+﻿using MessageModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api_universal_robots_rmq.DAL
 {

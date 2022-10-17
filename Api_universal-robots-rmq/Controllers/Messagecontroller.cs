@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Api_universal_robots_rmq.Model;
 using Microsoft.AspNetCore.Authorization;
 using Api_universal_robots_rmq.Service;
 using Api_universal_robots_rmq.DAL;
+using MessageModel;
 
 namespace Api_universal_robots_rmq.Controllers
 {
@@ -21,7 +21,7 @@ namespace Api_universal_robots_rmq.Controllers
 
         [AllowAnonymous]
         [HttpPost("Create")]
-        public IActionResult Message([FromBody] Model.Message model)
+        public IActionResult Message([FromBody] Message model)
         {
             try
             {
