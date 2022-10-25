@@ -5,7 +5,8 @@ namespace MessageModel
     public class Message
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public int RobotId { get; set; }
         public string? Description { get; set; }
 
         public DateTime Created { get; set; }
