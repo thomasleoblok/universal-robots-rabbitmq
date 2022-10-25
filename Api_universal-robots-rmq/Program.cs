@@ -1,3 +1,4 @@
+using Api_universal_robots_rmq.RabitMQ;
 using Api_universal_robots_rmq.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-
+builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
+//builder.Services.AddSwaggerGen();
 // add services to dependency injection container
 {
     var services = builder.Services;
