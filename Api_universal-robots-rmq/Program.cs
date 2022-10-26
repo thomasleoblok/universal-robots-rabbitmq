@@ -4,7 +4,8 @@ using Api_universal_robots_rmq.Service;
 using Microsoft.EntityFrameworkCore;
 
 RabitMQConsumer consumer = new RabitMQConsumer();
-consumer.ConsumeMessages();
+Thread thread = new Thread(consumer.ConsumeMessages);
+thread.Start();
 
 var builder = WebApplication.CreateBuilder(args);
 
