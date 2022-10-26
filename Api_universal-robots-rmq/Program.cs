@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
+//builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
 //builder.Services.AddSwaggerGen();
 // add services to dependency injection container
 {
