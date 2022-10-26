@@ -26,13 +26,15 @@ class RobotMessaging
 
             Console.WriteLine("Press ESC to stop");
 
+            const string ROUTINGKEY = "universalrobots";
+
             do
             {
                 while (!Console.KeyAvailable)
                 {
                     Thread.Sleep(rnd.Next(5000, 15000));
                     // Klargører channel samt message
-                    var routingKey = (args.Length > 0) ? args[0] : "anonymous.info";
+                    var routingKey = (args.Length > 0) ? args[0] : ROUTINGKEY;
                     var message = (args.Length > 1)
                                   ? string.Join(" ", args.Skip(1).ToArray())
                                   : JsonSerializer.Serialize(new Message

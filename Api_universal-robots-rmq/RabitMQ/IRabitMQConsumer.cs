@@ -2,7 +2,7 @@
 {
     public interface IRabitMQConsumer
     {
-        
+        public void ConsumeMessages();
 
     }
 }
