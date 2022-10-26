@@ -13,16 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-<<<<<<< HEAD
-//builder.Services.AddScoped<IRabitMQConsumer, RabitMQConsumer>();
-//builder.Services.AddSwaggerGen();
-// add services to dependency injection container
-=======
 builder.Services.AddDbContext<robotcontext>(opt =>
  opt.UseSqlServer("Data Source=mssql1.unoeuro.com;Initial Catalog=thomasblok_dk_db_softwareudvikling;Persist Security Info=True;User ID=thomasblok_dk;Password=Ea2Rrpz5GDmF"));
 //builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
 
->>>>>>> 6167a967b513e717dc9006e28061a5a9092605b5
 {
     var services = builder.Services;
 
