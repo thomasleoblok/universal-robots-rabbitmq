@@ -14,12 +14,15 @@ namespace Api_universal_robots_rmq.Service
     public class Messageservice: IMessageService
     {
         private robotcontext _context;
+        
         public Messageservice
         (
             robotcontext context
+           
         )
         {
             _context = context;
+           
         }
 
         public Message Create(Message CreateMessage)

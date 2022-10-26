@@ -1,5 +1,7 @@
+using Api_universal_robots_rmq.DAL;
 using Api_universal_robots_rmq.RabitMQ;
 using Api_universal_robots_rmq.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,15 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddDbContext<robotcontext>(opt =>
+ opt.UseSqlServer("Data Source=mssql1.unoeuro.com;Initial Catalog=thomasblok_dk_db_softwareudvikling;Persist Security Info=True;User ID=thomasblok_dk;Password=Ea2Rrpz5GDmF"));
 //builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
-//builder.Services.AddSwaggerGen();
-// add services to dependency injection container
+
 {
     var services = builder.Services;
    
     services.AddCors();
     
-    // configure dependency injection for application services
+    
     services.AddScoped<IMessageService, Messageservice>();
 }
 
