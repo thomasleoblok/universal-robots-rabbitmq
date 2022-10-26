@@ -6,7 +6,7 @@ namespace Api_universal_robots_rmq.Service
     public interface IMessageService
     {
         Message Create(Message CreateMessage);
-        Message update(int id, Message UpdateMessage);
+        Message update(Guid id, Message UpdateMessage);
         IEnumerable<Message> Getall();
         Message GetById(int id);
         Message DeleteMessage(int id);
@@ -29,7 +29,7 @@ namespace Api_universal_robots_rmq.Service
             return CreateMessage;
         }
 
-        public Message update(int id, Message updateMessage)
+        public Message update(Guid id, Message updateMessage)
         {
             var message = _context.messages.Find(id);
             if (message == null) throw new Exception("Message not found");

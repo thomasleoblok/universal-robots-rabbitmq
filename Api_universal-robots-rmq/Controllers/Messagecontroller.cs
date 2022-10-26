@@ -39,7 +39,7 @@ namespace Api_universal_robots_rmq.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UMessage(int sid5, Message model)
+        public IActionResult UMessage(Guid sid5, Message model)
         {
             try { 
             
