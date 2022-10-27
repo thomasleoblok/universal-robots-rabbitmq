@@ -22,7 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Firebase\" />
     <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="private_key.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -13,14 +13,12 @@ using FireSharp.Response;
 using FireSharp.Interfaces;
 using FireSharp;
 using System.Net;
+using Message = FirebaseAdmin.Messaging.Message;
 
 namespace Api_universal_robots_rmq.RabitMQ
 {
     public class RabitMQConsumer : IRabitMQConsumer
     {
-        IFirebaseClient client;
-
-
         public void ConsumeMessages()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
@@ -58,19 +56,36 @@ namespace Api_universal_robots_rmq.RabitMQ
 
         private async void SendPushNotification(string message)
         {
+            if (FirebaseApp.DefaultInstance == null)
+            {
+                FirebaseApp.Create(new AppOptions()
+                {
+                    //Credential = GoogleCredential.FromFile(@"Firebase/private_key.json")
+                    Credential = GoogleCredential.FromFile("private_key.json")
+                });
+            }
             // This registration token comes from the client FCM SDKs.
-            var registrationToken = "BCXv3Slw4-aTkAb7lZQ9bzuX2JFZI3m4zJUpzDob3vrw4lKVmVyxY3HJV-9IcshQCbt7WWR94xBLR-xYum8iG6s";
+            var registrationToken = "fzf1QRMsSa-KEEywrgDytb:APA91bFEuOLfdp8PoNgDVik3a-eQGrUc-luqrMMd_mo9uIwS-T7qi90O3ui9ZkNnYZs5k6doqF09T0eFZCWEBJcuB7x24xCR0yZc4TzTEN9UDe3L5q9yrIJx4OqfJjhgs68zuRZsVyOJ";
 
             // See documentation on defining a message payload.
-            var msg = new FirebaseAdmin.Messaging.Message()
+            var msg = new Message()
             {
-                Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(message),
+                Data = new Dictionary<string, string>()
+                {
+                    { "myData", "1337" },
+                },
+                //Topic = "all",
                 Token = registrationToken,
+                Notification = new Notification()
+                {
+                    Title = "hej",
+                    Body = "Here is your test!"
+                }
             };
 
             // Send a message to the device corresponding to the provided
             // registration token.
-            string response = await FirebaseMessaging.DefaultInstance.SendAsync(msg);
+            string response = FirebaseMessaging.DefaultInstance.SendAsync(msg).Result;
             // Response is a message ID string.
             Console.WriteLine("Successfully sent message: " + response);
         }

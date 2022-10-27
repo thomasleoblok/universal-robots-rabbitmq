@@ -31,9 +31,6 @@ builder.Services.AddDbContext<robotcontext>(opt =>
 
 
 
-
-
-
 var app = builder.Build();
 
 
