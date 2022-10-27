@@ -27,6 +27,13 @@ builder.Services.AddDbContext<robotcontext>(opt =>
     services.AddScoped<IMessageService, Messageservice>();
 }
 
+
+
+
+
+
+
+
 var app = builder.Build();
 
 
